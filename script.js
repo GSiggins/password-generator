@@ -33,6 +33,8 @@ function userPrompts() {
   }
 }
 
+
+
 console.log(includeUpper);
 console.log(includeLower);
 console.log(includeNumber);
