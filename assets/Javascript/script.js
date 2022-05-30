@@ -3,6 +3,8 @@ var generateBtn = document.querySelector("#generate");
 var possibleChars = []
 var passArray = []
 
+
+
 passwordGenerate()
 
 function passwordGenerate() {
@@ -17,18 +19,18 @@ function passwordGenerate() {
 
   validateUserInput()
   function validateUserInput() {
-    let userLength = prompt("How long do you want your password? (Between 8-128)");
+    let userLength = parseInt(prompt("How long do you want your password? (Between 8-128)"),10);
+    if (!userLength) {
+      alert("Please type a number between 8-128");
+      validateUserInput();
+      return null
+    }
     if (userLength < 8 || userLength > 128) {
       alert("You need to choose between 8-128 characters for your password");
       validateUserInput();
       return null
     }
-    if (typeof(userLength) !== Number) {
-      alert("Please type a number between 8-128");
-      validateUserInput();
-      return null
-    }
-
+   
     userPrompts()
 
     function userPrompts() {
@@ -84,4 +86,4 @@ function passwordGenerate() {
 // var password = generatePassword();
 // var passwordText = document.querySelector("#password");
 
-// generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", passwordGenerate());
