@@ -1,13 +1,13 @@
 // Assignment Code
-
+var generateBtn = document.querySelector("#generate");
+var possibleChars = []
+var passArray = []
 
 passwordGenerate()
 
 function passwordGenerate() {
 
-  var generateBtn = document.querySelector("#generate");
-  var possibleChars = []
-  var passArray = []
+ 
   var upperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',]
   var lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
   var numberArray = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
@@ -17,9 +17,14 @@ function passwordGenerate() {
 
   validateUserInput()
   function validateUserInput() {
-    let passLength = prompt("How long do you want your password? (Between 8-128)");
-    if (passLength < 8 || passLength > 128) {
+    let userLength = prompt("How long do you want your password? (Between 8-128)");
+    if (userLength < 8 || userLength > 128) {
       alert("You need to choose between 8-128 characters for your password");
+      validateUserInput();
+      return null
+    }
+    if (typeof(userLength) !== Number) {
+      alert("Please type a number between 8-128");
       validateUserInput();
       return null
     }
@@ -43,7 +48,7 @@ function passwordGenerate() {
       console.log(includeLower)
       console.log(includeNumber)
       console.log(includeSpecial)
-      console.log(passLength)
+      console.log(userLength)
 
       generatePassword()
       function generatePassword() {
@@ -69,19 +74,11 @@ function passwordGenerate() {
       }
 
       randomSelect()
-      function randomSelect() {
-        var passArray = []
-        while (passArray.length < passLength) {
-        var passValue = (Math.floor(Math.random() * passLength))
-        var arrayMaster = passArray[passValue]
-        passArray.push(passValue)
+     
         }
-        console.log(arrayMaster)
         return;
       }
     }
-  }
-}
 
 // function writePassword() {
 // var password = generatePassword();
