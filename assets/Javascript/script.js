@@ -73,9 +73,10 @@ function passwordGenerate() {
         var passArray = []
         while (passArray.length < passLength) {
         var passValue = (Math.floor(Math.random() * passLength))
+        var arrayMaster = passArray[passValue]
         passArray.push(passValue)
         }
-        console.log(passArray)
+        console.log(arrayMaster)
         return;
       }
     }
@@ -83,10 +84,7 @@ function passwordGenerate() {
 }
 
 // function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
+// var password = generatePassword();
+// var passwordText = document.querySelector("#password");
 
-//   passwordText.value = password;
-
-// // Add event listener to generate button
 // generateBtn.addEventListener("click", writePassword);
