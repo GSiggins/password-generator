@@ -1,15 +1,19 @@
 // Assignment Code
-var generateBtn = document.querySelector("#generate");
-var possibleChars = []
-var passArray = []
-var upperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',]
-var lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-var numberArray = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
-var specialChars = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '[', ']', '{', '}', '+', '-', '=', '~']
+
 
 passwordGenerate()
 
 function passwordGenerate() {
+
+  var generateBtn = document.querySelector("#generate");
+  var possibleChars = []
+  var passArray = []
+  var upperCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',]
+  var lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+  var numberArray = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+  var specialChars = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '[', ']', '{', '}', '+', '-', '=', '~']
+
+
 
   validateUserInput()
   function validateUserInput() {
@@ -41,44 +45,48 @@ function passwordGenerate() {
       console.log(includeSpecial)
       console.log(passLength)
 
+      generatePassword()
+      function generatePassword() {
+        var possibleChars = []
+        if (includeUpper) {
+          var possibleChars = possibleChars.concat(upperCase);
+        }
 
+        if (includeLower) {
+          var possibleChars = possibleChars.concat(lowerCase);
+        }
+
+        if (includeSpecial) {
+          var possibleChars = possibleChars.concat(specialChars);
+        }
+
+        if (includeNumber) {
+          var possibleChars = possibleChars.concat(numberArray);
+        }
+
+        console.log(possibleChars)
+        return
+      }
+
+      randomSelect()
+      function randomSelect() {
+        var passArray = []
+        while (passArray.length < passLength) {
+        var passValue = (Math.floor(Math.random() * passLength))
+        passArray.push(passValue)
+        }
+        console.log(passArray)
+        return;
+      }
     }
   }
 }
 
+// function writePassword() {
+//   var password = generatePassword();
+//   var passwordText = document.querySelector("#password");
 
-
-
-
-
-// generatePassword()
-
-//
-function generatePassword() {
-  if (includeUpper === true);
-  possibleChars = possibleChars.concat(includeUpper)
-}
-
-console.log(possibleChars)
-
-
-if (includeUpper === true);
-  possibleChars = possibleChars.concat(includeUpper)
-}
-
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
+//   passwordText.value = password;
 
 // // Add event listener to generate button
 // generateBtn.addEventListener("click", writePassword);
-
-
-
-// determine password length via prompt
-
-// determine which arrays to use using multiple prompts 
