@@ -14,6 +14,10 @@ function passwordGenerate() {
   var passArray = []
   var finalArray = []
   var possibleChars = []
+  var includeUpper;
+  var includeLower;
+  var includeNumber;
+  var includeSpecial;
 
 
   // Establishing parameters for prompt. Must be 8-128. Must be numbers.
@@ -27,16 +31,21 @@ function passwordGenerate() {
       alert("You need to choose between 8-128 characters for your password");
       return validateUserInput();
     }
+    console.log(userLength)
     return userLength;
   }
 
 
   //Confirming character types via boolean referencing the array.
   function userConfirm() {
-    var includeUpper = confirm("Do you want to include uppercase letters? OK = Yes. Cancel = No.");
-    var includeLower = confirm("Do you want to include lowercase letters? OK = Yes. Cancel = No.");
-    var includeNumber = confirm("Do you want to include numbers? OK = Yes. Cancel = No.");
-    var includeSpecial = confirm("Do you want to include special characters? OK = Yes. Cancel = No.");
+    includeUpper = confirm("Do you want to include uppercase letters? OK = Yes. Cancel = No.");
+    includeLower = confirm("Do you want to include lowercase letters? OK = Yes. Cancel = No.");
+    includeNumber = confirm("Do you want to include numbers? OK = Yes. Cancel = No.");
+    includeSpecial = confirm("Do you want to include special characters? OK = Yes. Cancel = No.");
+    console.log(includeUpper)
+    console.log(includeLower)
+    console.log(includeNumber)
+    console.log(includeSpecial)
 
     //Creates exception if user chooses no characters at all
     if (!includeLower && !includeNumber && !includeSpecial && !includeUpper) {
@@ -46,31 +55,22 @@ function passwordGenerate() {
     }
   }
 
-
-  console.log(includeUpper)
-  console.log(includeLower)
-  console.log(includeNumber)
-  console.log(includeSpecial)
-  console.log(userLength)
-
   //Concatonates the master array with user-confirmed character types
-
-
   function generateArray() {
     if (includeUpper) {
-      var possibleChars = possibleChars.concat(upperCase);
+      possibleChars = possibleChars.concat(upperCase);
     }
 
     if (includeLower) {
-      var possibleChars = possibleChars.concat(lowerCase);
+      possibleChars = possibleChars.concat(lowerCase);
     }
 
     if (includeSpecial) {
-      var possibleChars = possibleChars.concat(specialChars);
+      possibleChars = possibleChars.concat(specialChars);
     }
 
     if (includeNumber) {
-      var possibleChars = possibleChars.concat(numberArray);
+      possibleChars = possibleChars.concat(numberArray);
     }
 
     console.log(possibleChars)
@@ -80,19 +80,23 @@ function passwordGenerate() {
   function arrayLoop(userLength) {
     for (let i = 0; i < userLength; i++) {
       finalArray = finalArray.concat(possibleChars[Math.floor(Math.random() * possibleChars.length)]);
-      console.log(finalArray)
     }
+    console.log(finalArray)
+    return finalArray.join ("");
   }
+
   let userLength = validateUserInput()
   userConfirm()
   generateArray()
-  arrayLoop(userLength)
+  var result = arrayLoop(userLength)
+
+  document.getElementById("password").value = result
 }
 
+generateBtn.addEventListener("click", passwordGenerate);
 
 
 // function writePassword() {
 // var password = generatePassword();
 // var passwordText = document.querySelector("#password");
 
-generateBtn.addEventListener("click", passwordGenerate);
