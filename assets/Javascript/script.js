@@ -11,7 +11,6 @@ function passwordGenerate() {
   var numberArray = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
   var specialChars = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '[', ']', '{', '}', '+', '-', '=', '~']
   var possibleChars = []
-  var passArray = []
   var finalArray = []
   var possibleChars = []
   var includeUpper;
@@ -84,19 +83,16 @@ function passwordGenerate() {
     console.log(finalArray)
     return finalArray.join ("");
   }
-
+// dictates the order of functions
   let userLength = validateUserInput()
   userConfirm()
   generateArray()
   var result = arrayLoop(userLength)
 
+  //populates password text field with the result
+
   document.getElementById("password").value = result
 }
 
 generateBtn.addEventListener("click", passwordGenerate);
-
-
-// function writePassword() {
-// var password = generatePassword();
-// var passwordText = document.querySelector("#password");
 
