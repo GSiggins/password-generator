@@ -2,7 +2,7 @@
 var generateBtn = document.querySelector("#generate");
 
 //Starting initial function
-passwordGenerate()
+
 
 function passwordGenerate() {
   //Establishing arrays of possible characters and defining them as variables
@@ -95,4 +95,5 @@ function passwordGenerate() {
 }
 
 generateBtn.addEventListener("click", passwordGenerate);
+
 
